@@ -38,7 +38,9 @@ class FirstFragment : Fragment() {
                 SportAppTheme {
                     SplashScreen(
                         onSplashComplete = {
-                            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+                            val navController = findNavController()
+                            navController.navigate(R.id.action_FirstFragment_to_SecondFragment)
+                            navController.popBackStack()
                         }
                     )
                 }
