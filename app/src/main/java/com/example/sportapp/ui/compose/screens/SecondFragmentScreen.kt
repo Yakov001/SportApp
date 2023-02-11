@@ -8,14 +8,17 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.capitalize
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import coil.compose.AsyncImage
 import com.example.sportapp.ui.compose.theme.SportAppTheme
 import com.example.sportapp.ui.model.Resource
-import com.example.sportapp.ui.model.data_classes.Fixtures
-import com.example.sportapp.ui.model.data_classes.Meta
-import com.example.sportapp.ui.model.data_classes.Teams
+import com.example.sportapp.ui.model.data_classes.*
 
 @Composable
 fun SecondFragmentScreen(
@@ -26,10 +29,12 @@ fun SecondFragmentScreen(
             items(100) {
                 fixtures.data?.data?.getOrNull(it)?.let { fixture ->
                     GameCard(
-                        gameId = fixture.id,
+                        modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp),
                         teams = fixture.teams,
-                        onClick = {},
-                        modifier = Modifier.padding(8.dp)
+                        league = fixture.league.name,
+                        stage = fixture.stage_name,
+                        date = fixture.time.datetime.dropLast(3),
+                        onClick = {}
                     )
                 }
             }
@@ -41,29 +46,87 @@ fun SecondFragmentScreen(
 @Composable
 fun GameCard(
     modifier: Modifier = Modifier,
-    gameId: Int,
+    league : String,
+    stage : String,
     teams: Teams,
+    date: String,
     onClick: () -> Unit
 ) {
     Card(
         onClick = onClick,
         modifier = modifier
     ) {
-        Row(
-            modifier = Modifier.padding(8.dp),
-            horizontalArrangement = Arrangement.SpaceBetween
+        Column(
+            modifier = Modifier.padding(horizontal = 8.dp, vertical = 16.dp)
         ) {
-            Image(
-                imageVector = Icons.Default.Person,
-                contentDescription = "Image",
-                modifier = Modifier.size(width = 128.dp, height = 228.dp)
+            Text(text = date)
+            Divider(
+                color = MaterialTheme.colorScheme.outline,
+                modifier = Modifier.padding(bottom = 8.dp)
             )
-            Image(
-                imageVector = Icons.Default.Person,
-                contentDescription = "Image",
-                modifier = Modifier.size(width = 128.dp, height = 228.dp)
-            )
+            Row(
+                horizontalArrangement = Arrangement.SpaceBetween,
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                TeamMiniCard(
+                    imageUrl = teams.home.img,
+                    teamName = teams.home.name,
+                    status = "Home",
+                    modifier = Modifier.weight(1f)
+                )
+                MatchShortInfo (
+                    league = league,
+                    stage = stage,
+                    modifier = Modifier.weight(1f)
+                )
+                TeamMiniCard(
+                    imageUrl = teams.away.img,
+                    teamName = teams.away.name,
+                    status = "Away",
+                    modifier = Modifier.weight(1f)
+                )
+            }
         }
+    }
+}
+
+@Composable
+fun MatchShortInfo(
+    league: String,
+    stage: String,
+    modifier: Modifier = Modifier
+) {
+    Column(modifier) {
+        Text(text = "League:", style = MaterialTheme.typography.titleMedium)
+        Text(text = league, modifier = Modifier.padding(bottom = 8.dp))
+
+        Text(text = "Stage:", style = MaterialTheme.typography.titleMedium)
+        Text(text = stage, modifier = Modifier.padding(bottom = 8.dp))
+    }
+}
+
+@Composable
+fun TeamMiniCard(
+    imageUrl: String,
+    teamName: String,
+    status: String,
+    modifier: Modifier = Modifier
+) {
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = modifier
+    ) {
+        AsyncImage(
+            model = imageUrl,
+            contentDescription = "${status.capitalize()} Team",
+            modifier = Modifier.size(width = 64.dp, height = 64.dp).padding(top = 8.dp),
+            contentScale = ContentScale.Fit
+        )
+        Text(
+            text = teamName,
+            style = MaterialTheme.typography.titleLarge,
+            textAlign = TextAlign.Center
+        )
     }
 }
 
