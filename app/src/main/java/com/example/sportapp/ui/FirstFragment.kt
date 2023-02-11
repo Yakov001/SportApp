@@ -6,11 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.compose.ui.platform.ViewCompositionStrategy
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.sportapp.R
 import com.example.sportapp.databinding.FragmentFirstBinding
 import com.example.sportapp.ui.compose.screens.SplashScreen
 import com.example.sportapp.ui.compose.theme.SportAppTheme
+import com.example.sportapp.ui.viewModel.MainViewModel
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -46,12 +48,10 @@ class FirstFragment : Fragment() {
                 }
             }
         }
+        // Make API call while loading
+        ViewModelProvider(requireActivity()).get(MainViewModel::class.java).getFixtures()
+
         return view
-
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
 
     }
 

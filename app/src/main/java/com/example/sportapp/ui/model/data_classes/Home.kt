@@ -1,6 +1,6 @@
 package com.example.sportapp.ui.model.data_classes
 
-internal data class Home(
+data class Home(
     val coach_id: Any?,
     val form: Any?,
     val id: Int,

@@ -1,6 +1,6 @@
 package com.example.sportapp.ui.model.data_classes
 
-internal data class Time(
+data class Time(
     val date: String,
     val datetime: String,
     val minute: Any?,

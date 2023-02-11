@@ -1,6 +1,6 @@
 package com.example.sportapp.ui.model.data_classes
 
-internal data class KitColors(
+data class KitColors(
     val away_gk_main_color: String,
     val away_gk_number_color: String,
     val away_gk_second_color: String,

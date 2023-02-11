@@ -1,6 +1,6 @@
 package com.example.sportapp.ui.model.data_classes
 
-internal data class Data(
+data class Data(
     val aggregate_id: Any?,
     val assistants: Assistants,
     val attendance: Any?,

@@ -1,6 +1,6 @@
 package com.example.sportapp.ui.model.data_classes
 
-internal data class Away(
+data class Away(
     val coach_id: Any?,
     val form: Any?,
     val id: Int,

@@ -1,6 +1,6 @@
 package com.example.sportapp.ui.model.data_classes
 
-internal data class Scores(
+data class Scores(
     val away_score: Any?,
     val et_score: Any?,
     val ft_score: Any?,

@@ -1,6 +1,6 @@
 package com.example.sportapp.ui.model.retrofit
 
-import com.example.sportapp.ui.model.data_classes.FixturesByRound
+import com.example.sportapp.ui.model.data_classes.Fixtures
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -10,10 +10,10 @@ import retrofit2.http.Query
 interface SportApi {
 
     @GET(API_KEY)
-    suspend fun requestMatches(
+    suspend fun requestFixtures(
         @Query("t") type: String = "round",
         @Query("round_id") roundId: Int = 151633,
-    ) : Response<FixturesByRound>
+    ) : Response<Fixtures>
 
     companion object {
         var userApi: SportApi? = null
@@ -27,7 +27,7 @@ interface SportApi {
             }
             return userApi!!
         }
-        private const val BASE_URL = "https://api.soccersapi.com/v2.2/leagues/"
+        private const val BASE_URL = "https://api.soccersapi.com/v2.2/fixtures/"
         private const val API_KEY = "?user=yakovrussian&token=3bbe8cb0d3dcd0ac73f2d77cffb03c55"
     }
 }
