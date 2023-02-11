@@ -22,7 +22,5 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-
-        val navController = findNavController(R.id.nav_host_fragment_content_main)
     }
 }
