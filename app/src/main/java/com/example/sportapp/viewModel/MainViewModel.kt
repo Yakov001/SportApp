@@ -1,11 +1,11 @@
-package com.example.sportapp.ui.viewModel
+package com.example.sportapp.viewModel
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.sportapp.ui.model.Resource
-import com.example.sportapp.ui.model.data_classes.Fixtures
-import com.example.sportapp.ui.model.retrofit.SportApi
+import com.example.sportapp.model.Resource
+import com.example.sportapp.model.data_classes.Fixtures
+import com.example.sportapp.model.retrofit.SportApi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 

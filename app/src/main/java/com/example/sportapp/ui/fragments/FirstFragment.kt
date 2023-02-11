@@ -1,4 +1,4 @@
-package com.example.sportapp.ui
+package com.example.sportapp.ui.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -12,7 +12,7 @@ import com.example.sportapp.R
 import com.example.sportapp.databinding.FragmentFirstBinding
 import com.example.sportapp.ui.compose.screens.SplashScreen
 import com.example.sportapp.ui.compose.theme.SportAppTheme
-import com.example.sportapp.ui.viewModel.MainViewModel
+import com.example.sportapp.viewModel.MainViewModel
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -42,7 +42,6 @@ class FirstFragment : Fragment() {
                         onSplashComplete = {
                             val navController = findNavController()
                             navController.navigate(R.id.action_FirstFragment_to_SecondFragment)
-                            navController.popBackStack()
                         }
                     )
                 }

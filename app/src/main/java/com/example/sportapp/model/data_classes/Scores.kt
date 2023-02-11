@@ -1,4 +1,4 @@
-package com.example.sportapp.ui.model.data_classes
+package com.example.sportapp.model.data_classes
 
 data class Scores(
     val away_score: Any?,

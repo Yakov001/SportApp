@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.example.sportapp.R
 import com.example.sportapp.databinding.ActivityMainBinding
-import com.example.sportapp.ui.viewModel.MainViewModel
+import com.example.sportapp.viewModel.MainViewModel
 
 class MainActivity : AppCompatActivity() {
 

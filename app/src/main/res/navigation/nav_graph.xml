@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
@@ -7,7 +8,7 @@
 
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="com.example.sportapp.ui.FirstFragment"
+        android:name="com.example.sportapp.ui.fragments.FirstFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_first">
 
@@ -17,14 +18,24 @@
             app:popUpTo="@+id/FirstFragment"
             app:popUpToInclusive="true"/>
     </fragment>
+
     <fragment
         android:id="@+id/SecondFragment"
-        android:name="com.example.sportapp.ui.SecondFragment"
+        android:name="com.example.sportapp.ui.fragments.SecondFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_second">
-
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            android:id="@+id/action_SecondFragment_to_WebViewFragment"
+            app:destination="@id/WebViewFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/WebViewFragment"
+        android:name="com.example.sportapp.ui.fragments.WebViewFragment"
+        android:label="@string/web_view_fragment_label"
+        tools:layout="@layout/web_view_fragment">
+        <action
+            android:id="@+id/action_WebViewFragment_to_SecondFragment"
+            app:destination="@id/SecondFragment" />
     </fragment>
 </navigation>

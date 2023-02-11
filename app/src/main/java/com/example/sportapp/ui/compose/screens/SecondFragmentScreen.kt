@@ -1,28 +1,25 @@
 package com.example.sportapp.ui.compose.screens
 
-import android.content.res.Configuration
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.text.capitalize
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
-import com.example.sportapp.ui.compose.theme.SportAppTheme
-import com.example.sportapp.ui.model.Resource
-import com.example.sportapp.ui.model.data_classes.*
+import com.example.sportapp.model.data_classes.Fixtures
+import com.example.sportapp.model.data_classes.Teams
+import com.example.sportapp.model.Resource
+import com.example.sportapp.model.data_classes.Data
+import com.example.sportapp.model.data_classes.*
 
 @Composable
 fun SecondFragmentScreen(
-    fixtures: Resource<Fixtures>
+    fixtures: Resource<Fixtures>,
+    onGameClick: (Data) -> Unit
 ) {
     Surface(Modifier.fillMaxSize()) {
         LazyColumn {
@@ -34,7 +31,7 @@ fun SecondFragmentScreen(
                         league = fixture.league.name,
                         stage = fixture.stage_name,
                         date = fixture.time.datetime.dropLast(3),
-                        onClick = {}
+                        onClick = { onGameClick(fixture) }
                     )
                 }
             }
@@ -119,7 +116,9 @@ fun TeamMiniCard(
         AsyncImage(
             model = imageUrl,
             contentDescription = "${status.capitalize()} Team",
-            modifier = Modifier.size(width = 64.dp, height = 64.dp).padding(top = 8.dp),
+            modifier = Modifier
+                .size(width = 64.dp, height = 64.dp)
+                .padding(top = 8.dp),
             contentScale = ContentScale.Fit
         )
         Text(
@@ -129,30 +128,3 @@ fun TeamMiniCard(
         )
     }
 }
-
-@Composable
-@Preview
-fun SecondFragmentScreenPreview() {
-    SportAppTheme() {
-        SecondFragmentScreen(
-            fixtures = fakeFixtures
-        )
-    }
-}
-
-@Composable
-@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
-fun SecondFragmentScreenDarkPreview() {
-    SportAppTheme {
-        SecondFragmentScreen(
-            fixtures = fakeFixtures
-        )
-    }
-}
-
-val fakeFixtures = Resource.Success(
-    data = Fixtures(
-        data = listOf(),
-        meta = Meta(1, null, 1, 1, "", 1, 1, " ")
-    )
-)
