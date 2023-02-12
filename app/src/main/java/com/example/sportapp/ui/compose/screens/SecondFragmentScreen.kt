@@ -1,7 +1,10 @@
 package com.example.sportapp.ui.compose.screens
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.CalendarMonth
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -41,8 +44,8 @@ fun SecondFragmentScreen(
 @Composable
 fun GameCard(
     modifier: Modifier = Modifier,
-    league : String,
-    stage : String,
+    league: String,
+    stage: String,
     teams: Teams,
     date: String,
     onClick: () -> Unit
@@ -52,36 +55,43 @@ fun GameCard(
         modifier = modifier
     ) {
         Column(
-            modifier = Modifier.padding(horizontal = 8.dp, vertical = 16.dp)
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(MaterialTheme.colorScheme.secondaryContainer)
         ) {
-            Text(text = date)
-            Divider(
-                color = MaterialTheme.colorScheme.outline,
-                modifier = Modifier.padding(bottom = 8.dp)
-            )
-            Row(
-                horizontalArrangement = Arrangement.SpaceBetween,
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                TeamMiniCard(
-                    imageUrl = teams.home.img,
-                    teamName = teams.home.name,
-                    status = "Home",
-                    modifier = Modifier.weight(1f)
-                )
-                MatchShortInfo (
-                    league = league,
-                    stage = stage,
-                    modifier = Modifier.weight(1f)
-                )
-                TeamMiniCard(
-                    imageUrl = teams.away.img,
-                    teamName = teams.away.name,
-                    status = "Away",
-                    modifier = Modifier.weight(1f)
-                )
+            Row(modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp)) {
+                Icon(imageVector = Icons.Default.CalendarMonth, contentDescription = null)
+                Text(text = date, modifier = Modifier.padding(start = 16.dp))
             }
+            Divider(
+                color = MaterialTheme.colorScheme.outline
+            )
         }
+        Row(
+            horizontalArrangement = Arrangement.SpaceBetween,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 8.dp, vertical = 16.dp)
+        ) {
+            TeamMiniCard(
+                imageUrl = teams.home.img,
+                teamName = teams.home.name,
+                status = "Home",
+                modifier = Modifier.weight(1f)
+            )
+            MatchShortInfo(
+                league = league,
+                stage = stage,
+                modifier = Modifier.weight(1f)
+            )
+            TeamMiniCard(
+                imageUrl = teams.away.img,
+                teamName = teams.away.name,
+                status = "Away",
+                modifier = Modifier.weight(1f)
+            )
+        }
+
     }
 }
 
