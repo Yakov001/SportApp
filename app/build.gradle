@@ -65,4 +65,7 @@ dependencies {
 
     //Coil (Images)
     implementation("io.coil-kt:coil-compose:2.2.2")
+
+    //One Signal SDK
+    implementation 'com.onesignal:OneSignal:[4.0.0, 4.99.99]'
 }
