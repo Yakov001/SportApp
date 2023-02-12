@@ -9,11 +9,11 @@ import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
-import com.example.sportapp.ui.compose.screens.SecondFragmentScreen
 import com.example.sportapp.ui.compose.theme.SportAppTheme
 import com.example.sportapp.viewModel.MainViewModel
-import com.example.sportapp.R
 import com.example.sportapp.databinding.FragmentSecondBinding
+import com.example.sportapp.ui.compose.screens.LeaguesListScreen
+import com.example.sportapp.R
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
@@ -47,10 +47,12 @@ class SecondFragment : Fragment() {
             setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
             setContent {
                 SportAppTheme {
-                    val fixturesResponse = viewModel.fixturesResponse.collectAsState()
-                    SecondFragmentScreen(
-                        fixtures = fixturesResponse.value,
-                        onGameClick = { findNavController().navigate(R.id.action_SecondFragment_to_WebViewFragment)}
+                    val allFixturesResponse = viewModel.allFixturesResponse.collectAsState()
+                    LeaguesListScreen(
+                        listFixtures = allFixturesResponse.value,
+                        onMatchClick = { data ->
+                            findNavController().navigate(R.id.action_SecondFragment_to_WebViewFragment)
+                        }
                     )
                 }
             }

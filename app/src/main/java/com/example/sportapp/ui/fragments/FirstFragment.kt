@@ -48,7 +48,7 @@ class FirstFragment : Fragment() {
             }
         }
         // Make API call while loading
-        ViewModelProvider(requireActivity()).get(MainViewModel::class.java).getFixtures()
+        ViewModelProvider(requireActivity()).get(MainViewModel::class.java).requestAllFixtures()
 
         return view
 
