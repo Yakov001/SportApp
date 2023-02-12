@@ -26,7 +26,7 @@ fun AutosizeText(
         ),
         onTextLayout = {
             if (it.hasVisualOverflow) {
-                multiplier *= 0.99f // you can tune this constant
+                multiplier *= 0.9f // you can tune this constant
             }
         }
     )

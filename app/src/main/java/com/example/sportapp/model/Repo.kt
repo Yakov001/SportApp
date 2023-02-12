@@ -1,6 +1,7 @@
 package com.example.sportapp.model
 
 import android.util.Log
+import com.example.sportapp.model.data_classes.Data
 import com.example.sportapp.model.data_classes.Fixtures
 import com.example.sportapp.model.retrofit.SportApi
 import com.example.sportapp.utils.Resource
@@ -33,6 +34,10 @@ class Repo private constructor(){
             result = Resource.Error("Failed request")
         }
         return result as Resource<List<Fixtures>>
+    }
+
+    suspend fun bookMark(match: Data) {
+
     }
 
     companion object {

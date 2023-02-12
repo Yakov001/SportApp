@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.sportapp.model.Repo
+import com.example.sportapp.model.data_classes.Data
 import com.example.sportapp.model.data_classes.Fixtures
 import com.example.sportapp.model.retrofit.SportApi
 import com.example.sportapp.utils.Resource
@@ -44,6 +45,14 @@ class MainViewModel : ViewModel() {
         viewModelScope.launch (Dispatchers.IO) {
             allFixturesResponse.value = Resource.Loading()
             allFixturesResponse.value = Repo.getInstance().requestAllFixtures()
+        }
+    }
+
+    var currentMatch : Data? = null
+
+    fun bookMark(match: Data) {
+        viewModelScope.launch (Dispatchers.IO) {
+            Repo.getInstance().bookMark(match)
         }
     }
 }
