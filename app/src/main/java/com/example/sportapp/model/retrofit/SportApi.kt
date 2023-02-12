@@ -1,6 +1,6 @@
 package com.example.sportapp.model.retrofit
 
-import com.example.sportapp.model.data_classes.Fixtures
+import com.example.sportapp.model.data_classes.fixtures.Fixtures
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

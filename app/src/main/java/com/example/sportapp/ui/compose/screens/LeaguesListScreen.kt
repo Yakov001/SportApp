@@ -15,7 +15,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
-import com.example.sportapp.model.data_classes.*
+import com.example.sportapp.model.data_classes.fixtures.*
 import com.example.sportapp.ui.compose.common_composables.AutosizeText
 import com.example.sportapp.utils.Resource
 

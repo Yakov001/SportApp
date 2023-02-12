@@ -1,8 +1,8 @@
 package com.example.sportapp.model
 
 import android.util.Log
-import com.example.sportapp.model.data_classes.Data
-import com.example.sportapp.model.data_classes.Fixtures
+import com.example.sportapp.model.data_classes.fixtures.Data
+import com.example.sportapp.model.data_classes.fixtures.Fixtures
 import com.example.sportapp.model.retrofit.SportApi
 import com.example.sportapp.utils.Resource
 import kotlinx.coroutines.CoroutineScope

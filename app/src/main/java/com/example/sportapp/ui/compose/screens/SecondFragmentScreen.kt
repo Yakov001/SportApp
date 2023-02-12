@@ -15,6 +15,9 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.example.sportapp.utils.Resource
 import com.example.sportapp.model.data_classes.*
+import com.example.sportapp.model.data_classes.fixtures.Data
+import com.example.sportapp.model.data_classes.fixtures.Fixtures
+import com.example.sportapp.model.data_classes.fixtures.Teams
 import com.example.sportapp.ui.compose.common_composables.AutosizeText
 
 @Composable

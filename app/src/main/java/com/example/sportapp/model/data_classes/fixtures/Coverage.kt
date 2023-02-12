@@ -1,4 +1,4 @@
-package com.example.sportapp.model.data_classes
+package com.example.sportapp.model.data_classes.fixtures
 
 data class Coverage(
     val has_lineups: Int,

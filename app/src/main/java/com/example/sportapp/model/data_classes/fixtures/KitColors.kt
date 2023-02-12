@@ -1,4 +1,4 @@
-package com.example.sportapp.model.data_classes
+package com.example.sportapp.model.data_classes.fixtures
 
 data class KitColors(
     val away_gk_main_color: String,

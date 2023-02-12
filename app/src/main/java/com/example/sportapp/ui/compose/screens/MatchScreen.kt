@@ -11,7 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
-import com.example.sportapp.model.data_classes.Data
+import com.example.sportapp.model.data_classes.fixtures.Data
 
 @Composable
 fun MatchScreen(
@@ -21,9 +21,11 @@ fun MatchScreen(
 ) {
     Surface(Modifier.fillMaxSize()) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            ElevatedCard(colors = CardDefaults.elevatedCardColors(
-                containerColor = MaterialTheme.colorScheme.inverseSurface
-            )) {
+            ElevatedCard(
+                colors = CardDefaults.elevatedCardColors(
+                    containerColor = MaterialTheme.colorScheme.inverseSurface
+                )
+            ) {
                 Row(
                     modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp),
                     verticalAlignment = Alignment.CenterVertically,
@@ -44,7 +46,7 @@ fun MatchScreen(
                         AsyncImage(
                             model = match.teams.home.img,
                             contentDescription = "Team Icon",
-                            modifier = Modifier.size(40.dp).padding(bottom = 8.dp)
+                            modifier = Modifier.size(70.dp).padding(bottom = 8.dp)
                         )
                         Text(text = match.teams.home.name)
                     }
@@ -55,7 +57,7 @@ fun MatchScreen(
                         AsyncImage(
                             model = match.teams.away.img,
                             contentDescription = "Team Icon",
-                            modifier = Modifier.size(40.dp).padding(bottom = 8.dp)
+                            modifier = Modifier.size(70.dp).padding(bottom = 8.dp)
                         )
                         Text(text = match.teams.away.name)
                     }
@@ -71,6 +73,7 @@ fun MatchScreen(
                     Text(text = "Brøndby Stadium", style = MaterialTheme.typography.titleLarge)
                     Text(text = "Capacity: 29000")
                     Text(text = "City: Copenhagen")
+                    Text(text = "Country: Denmark")
                 }
                 Divider(Modifier.width(16.dp))
                 AsyncImage(
