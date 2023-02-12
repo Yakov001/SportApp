@@ -21,10 +21,14 @@ fun MatchScreen(
 ) {
     Surface(Modifier.fillMaxSize()) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            ElevatedCard(colors = CardDefaults.elevatedCardColors(containerColor = MaterialTheme.colorScheme.inverseSurface)) {
-                Row(modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(vertical = 8.dp), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.SpaceAround) {
+            ElevatedCard(colors = CardDefaults.elevatedCardColors(
+                containerColor = MaterialTheme.colorScheme.inverseSurface
+            )) {
+                Row(
+                    modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.SpaceAround)
+                {
                     IconButton(onClick = onBackClick) {
                         Icon(imageVector = Icons.Default.ArrowBackIos, contentDescription = "Back")
                     }
@@ -33,33 +37,53 @@ fun MatchScreen(
                         Icon(imageVector = Icons.Default.Bookmark, contentDescription = "Bookmark", modifier = Modifier.size(50.dp))
                     }
                 }
-                Row(modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(vertical = 32.dp)) {
+                Row(
+                    modifier = Modifier.fillMaxWidth().padding(vertical = 32.dp)
+                ) {
                     Column(modifier = Modifier.weight(1f), horizontalAlignment = Alignment.CenterHorizontally) {
-                        AsyncImage(model = match.teams.home.img, contentDescription = "Team Icon")
+                        AsyncImage(
+                            model = match.teams.home.img,
+                            contentDescription = "Team Icon",
+                            modifier = Modifier.size(40.dp).padding(bottom = 8.dp)
+                        )
                         Text(text = match.teams.home.name)
                     }
                     Row(modifier = Modifier.weight(1f), horizontalArrangement = Arrangement.Center) {
                         Text(text = "2 - 8", fontSize = 20.sp)
                     }
                     Column(modifier = Modifier.weight(1f), horizontalAlignment = Alignment.CenterHorizontally) {
-                        AsyncImage(model = match.teams.away.img, contentDescription = "Team Icon")
+                        AsyncImage(
+                            model = match.teams.away.img,
+                            contentDescription = "Team Icon",
+                            modifier = Modifier.size(40.dp).padding(bottom = 8.dp)
+                        )
                         Text(text = match.teams.away.name)
                     }
                 }
             }
             Text(text = "Arena", fontSize = 40.sp, modifier = Modifier.padding(16.dp))
-            Row(modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Center) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.Center
+            ) {
                 Column() {
                     Text(text = "Brøndby Stadium", style = MaterialTheme.typography.titleLarge)
                     Text(text = "Capacity: 29000")
                     Text(text = "City: Copenhagen")
                 }
                 Divider(Modifier.width(16.dp))
-                AsyncImage(model = "https://cdn.soccersapi.com/images/soccer/venues/2763.png", contentDescription = "Arena Image", modifier = Modifier.size(150.dp))
+                AsyncImage(
+                    model = "https://cdn.soccersapi.com/images/soccer/venues/2763.png",
+                    contentDescription = "Arena Image",
+                    modifier = Modifier.size(150.dp)
+                )
             }
-            Text(text = "Match Stats", fontSize = 40.sp, modifier = Modifier.padding(16.dp))
+            Text(
+                text = "Match Stats",
+                fontSize = 40.sp,
+                modifier = Modifier.padding(16.dp)
+            )
 
         }
     }

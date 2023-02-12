@@ -9,10 +9,16 @@ import retrofit2.http.Query
 
 interface SportApi {
 
-    @GET(API_KEY)
+    @GET("fixtures/$API_KEY")
     suspend fun requestFixtures(
         @Query("t") type: String = "round",
         @Query("round_id") roundId: Int = 151633,
+    ) : Response<Fixtures>
+
+    @GET("venues/$API_KEY")
+    suspend fun requestVenue(
+        @Query("t") type: String = "info",
+        @Query("id") roundId: Int = 2763,
     ) : Response<Fixtures>
 
     companion object {
@@ -27,7 +33,7 @@ interface SportApi {
             }
             return userApi!!
         }
-        private const val BASE_URL = "https://api.soccersapi.com/v2.2/fixtures/"
+        private const val BASE_URL = "https://api.soccersapi.com/v2.2/"
         private const val API_KEY = "?user=yakovrussian&token=3bbe8cb0d3dcd0ac73f2d77cffb03c55"
     }
 }
