@@ -45,7 +45,7 @@ class MatchFragment : Fragment() {
             setContent {
                 SportAppTheme {
                     val savedMatches = viewModel.savedMatches
-                    viewModel.savedMatches
+                    val isSaved = savedMatches.contains(match)
 
                     MatchScreen(
                         match = match,
@@ -53,8 +53,14 @@ class MatchFragment : Fragment() {
                             findNavController().navigate(R.id.action_MatchFragment_to_SecondFragment)
                             viewModel.currentMatch = null
                         },
-                        onMatchSave = { viewModel.saveMatch(match) },
-                        isSaved = savedMatches.contains(match)
+                        onMatchSave = {
+                            if (isSaved) {
+                                viewModel.deleteMatch(match)
+                            } else {
+                                viewModel.saveMatch(match)
+                            }
+                        },
+                        isSaved = isSaved
                     )
                 }
             }

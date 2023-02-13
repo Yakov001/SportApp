@@ -52,6 +52,12 @@ class Repo private constructor(){
         return matches
     }
 
+    suspend fun deleteMatch(match: Data, context: Context) {
+        CoroutineScope(Dispatchers.IO).launch {
+            MatchesDatabase(context).getMatchesDao().deleteMatch(match)
+        }
+    }
+
     companion object {
         var repo: Repo? = null
         fun getInstance() : Repo {

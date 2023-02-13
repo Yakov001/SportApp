@@ -43,4 +43,11 @@ class MainViewModel(val app: Application) : AndroidViewModel(application = app) 
             savedMatches.addAll(Repo.getInstance().getSavedMatches(app.applicationContext))
         }
     }
+
+    fun deleteMatch(match: Data) {
+        viewModelScope.launch (Dispatchers.IO) {
+            Repo.getInstance().deleteMatch(match, app.applicationContext)
+            savedMatches.remove(match)
+        }
+    }
 }
