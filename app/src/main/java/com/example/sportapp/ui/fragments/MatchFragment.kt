@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -45,7 +44,8 @@ class MatchFragment : Fragment() {
             setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
             setContent {
                 SportAppTheme {
-                    val savedMatches = viewModel.savedMatches.collectAsState()
+                    val savedMatches = viewModel.savedMatches
+                    viewModel.savedMatches
 
                     MatchScreen(
                         match = match,
@@ -54,7 +54,7 @@ class MatchFragment : Fragment() {
                             viewModel.currentMatch = null
                         },
                         onMatchSave = { viewModel.saveMatch(match) },
-                        isSaved = savedMatches.value.contains(match)
+                        isSaved = savedMatches.contains(match)
                     )
                 }
             }

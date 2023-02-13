@@ -48,7 +48,9 @@ class FirstFragment : Fragment() {
             }
         }
         // Make API call while loading
-        ViewModelProvider(requireActivity()).get(MainViewModel::class.java).requestAllFixtures()
+        val viewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
+        viewModel.requestAllFixtures()
+        viewModel.getSavedMatches()
 
         return view
 
