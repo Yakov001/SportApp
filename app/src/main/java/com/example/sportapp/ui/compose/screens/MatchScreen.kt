@@ -19,7 +19,8 @@ fun MatchScreen(
     match: Data,
     onBackClick: () -> Unit,
     onMatchSave: () -> Unit,
-    isSaved: Boolean = false
+    isSaved: Boolean = false,
+    openWebView: () -> Unit
 ) {
     Surface(Modifier.fillMaxSize()) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
@@ -29,7 +30,9 @@ fun MatchScreen(
                 )
             ) {
                 Row(
-                    modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 8.dp),
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.SpaceAround)
                 {
@@ -47,13 +50,17 @@ fun MatchScreen(
                     }
                 }
                 Row(
-                    modifier = Modifier.fillMaxWidth().padding(vertical = 32.dp)
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 32.dp)
                 ) {
                     Column(modifier = Modifier.weight(1f), horizontalAlignment = Alignment.CenterHorizontally) {
                         AsyncImage(
                             model = match.teams.home.img,
                             contentDescription = "Team Icon",
-                            modifier = Modifier.size(70.dp).padding(bottom = 8.dp)
+                            modifier = Modifier
+                                .size(70.dp)
+                                .padding(bottom = 8.dp)
                         )
                         Text(text = match.teams.home.name)
                     }
@@ -64,7 +71,9 @@ fun MatchScreen(
                         AsyncImage(
                             model = match.teams.away.img,
                             contentDescription = "Team Icon",
-                            modifier = Modifier.size(70.dp).padding(bottom = 8.dp)
+                            modifier = Modifier
+                                .size(70.dp)
+                                .padding(bottom = 8.dp)
                         )
                         Text(text = match.teams.away.name)
                     }
@@ -94,6 +103,9 @@ fun MatchScreen(
                 fontSize = 40.sp,
                 modifier = Modifier.padding(16.dp)
             )
+            Button(onClick = openWebView) {
+                Text(text = "Open FIFA website")
+            }
 
         }
     }

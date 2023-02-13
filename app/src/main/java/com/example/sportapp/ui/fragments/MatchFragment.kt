@@ -60,7 +60,8 @@ class MatchFragment : Fragment() {
                                 viewModel.saveMatch(match)
                             }
                         },
-                        isSaved = isSaved
+                        isSaved = isSaved,
+                        openWebView = { findNavController().navigate(R.id.action_MatchFragment_to_WebViewFragment) }
                     )
                 }
             }

@@ -8,6 +8,7 @@ import com.example.sportapp.model.Repo
 import com.example.sportapp.model.data_classes.fixtures.Data
 import com.example.sportapp.model.data_classes.fixtures.Fixtures
 import com.example.sportapp.utils.Resource
+import com.onesignal.OneSignal
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
@@ -35,6 +36,7 @@ class MainViewModel(val app: Application) : AndroidViewModel(application = app) 
             Repo.getInstance().saveMatch(match, app.applicationContext)
             savedMatches.add(match)
         }
+        enableOneSignalNotification(match.time.timestamp)
     }
 
     fun getSavedMatches() {
@@ -49,5 +51,9 @@ class MainViewModel(val app: Application) : AndroidViewModel(application = app) 
             Repo.getInstance().deleteMatch(match, app.applicationContext)
             savedMatches.remove(match)
         }
+    }
+
+    fun enableOneSignalNotification(date : Int) {
+        // OneSignal.sendTag("Game Start", date.toString())
     }
 }
