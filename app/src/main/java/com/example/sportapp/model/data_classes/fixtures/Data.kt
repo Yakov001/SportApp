@@ -1,34 +1,43 @@
 package com.example.sportapp.model.data_classes.fixtures
 
+import androidx.room.Entity
+import androidx.room.Ignore
+import androidx.room.PrimaryKey
+import androidx.room.TypeConverters
+import com.example.sportapp.model.room.MatchConverter
+
+@Entity(tableName = "matches")
 data class Data(
-    val aggregate_id: Any?,
-    val assistants: Assistants,
-    val attendance: Any?,
-    val coverage: Coverage,
-    val deleted: String,
-    val group_id: String,
-    val group_name: String,
+    @PrimaryKey
     val id: Int,
-    val info: Any?,
     val league: League,
-    val leg: Any?,
-    val pitch: Any?,
-    val referee_id: Any?,
-    val round_id: String,
-    val round_name: String,
-    val scores: Scores,
-    val season_id: String,
-    val season_name: String,
+    val teams: Teams,
+    val venue_id: String,
     val stage_id: String,
     val stage_name: String,
-    val standings: Standings,
-    val status: Int,
-    val status_name: String,
-    val status_period: Any?,
-    val teams: Teams,
     val time: Time,
-    val venue_id: String,
-    val weather_report: Any?,
-    val week: String,
-    val winner_team_id: String?
-)
+    val round_name: String
+    ) {
+    @Ignore val aggregate_id: Any? = null
+    @Ignore val assistants: Assistants? = null
+    @Ignore val attendance: Any? = null
+    @Ignore val coverage: Coverage? = null
+    @Ignore val deleted: String? = null
+    @Ignore val group_id: String? = null
+    @Ignore val group_name: String? = null
+    @Ignore val info: Any? = null
+    @Ignore val leg: Any? = null
+    @Ignore val pitch: Any? = null
+    @Ignore val referee_id: Any? = null
+    @Ignore val round_id: String? = null
+    @Ignore val scores: Scores? = null
+    @Ignore val season_id: String? = null
+    @Ignore val season_name: String? = null
+    @Ignore val standings: Standings? = null
+    @Ignore val status: Int? = null
+    @Ignore val status_name: String? = null
+    @Ignore val status_period: Any? = null
+    @Ignore val weather_report: Any? = null
+    @Ignore val week: String? = null
+    @Ignore val winner_team_id: String? = null
+}

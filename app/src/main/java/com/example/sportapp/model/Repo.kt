@@ -1,9 +1,11 @@
 package com.example.sportapp.model
 
+import android.content.Context
 import android.util.Log
 import com.example.sportapp.model.data_classes.fixtures.Data
 import com.example.sportapp.model.data_classes.fixtures.Fixtures
 import com.example.sportapp.model.retrofit.SportApi
+import com.example.sportapp.model.room.MatchesDatabase
 import com.example.sportapp.utils.Resource
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -36,8 +38,18 @@ class Repo private constructor(){
         return result as Resource<List<Fixtures>>
     }
 
-    suspend fun bookMark(match: Data) {
+    suspend fun saveMatch(match: Data, context: Context) {
+        CoroutineScope(Dispatchers.IO).launch {
+            MatchesDatabase(context).getMatchesDao().saveMatch(match)
+        }
+    }
 
+    suspend fun getSavedMatches(context: Context) : List<Data> {
+        var matches = listOf<Data>()
+        CoroutineScope(Dispatchers.IO).launch {
+            matches = async{ MatchesDatabase(context).getMatchesDao().getSavedMatches() }.await()
+        }.join()
+        return matches
     }
 
     companion object {

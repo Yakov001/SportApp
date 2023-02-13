@@ -48,12 +48,15 @@ class SecondFragment : Fragment() {
             setContent {
                 SportAppTheme {
                     val allFixturesResponse = viewModel.allFixturesResponse.collectAsState()
+                    val savedMatches = viewModel.savedMatches.collectAsState()
+
                     LeaguesListScreen(
                         listFixtures = allFixturesResponse.value,
                         onMatchClick = { data ->
                             viewModel.currentMatch = data
                             findNavController().navigate(R.id.action_SecondFragment_to_MatchFragment)
-                        }
+                        },
+                        savedMatches = savedMatches.value
                     )
                 }
             }

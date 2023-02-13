@@ -22,10 +22,16 @@ import com.example.sportapp.utils.Resource
 @Composable
 fun LeaguesListScreen(
     listFixtures: Resource<List<Fixtures>>,
-    onMatchClick: (Data) -> Unit
+    onMatchClick: (Data) -> Unit,
+    savedMatches: List<Data>
 ) {
     if (listFixtures is Resource.Success) {
         LazyColumn {
+            // Saved Matches
+            item {
+                LeagueCard(games = savedMatches, onMatchClick = onMatchClick)
+            }
+            // Matches By League
             items(items = listFixtures.data!!) { fixtures ->
                 val league = fixtures.data[0].league
                 LeagueCard(
@@ -40,26 +46,28 @@ fun LeaguesListScreen(
 
 @Composable
 fun LeagueCard(
-    league: League,
+    league: League? = null,
     games: List<Data>,
     onMatchClick: (Data) -> Unit
 ) {
     ElevatedCard(modifier = Modifier.padding(vertical = 6.dp, horizontal = 12.dp)) {
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier
-                .fillMaxWidth()
-                .background(MaterialTheme.colorScheme.secondaryContainer)
-                .padding(horizontal = 16.dp)
-        ) {
-            AsyncImage(
-                model = league.country_flag,
-                contentDescription = "League Country Flag",
+        if (league != null) {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier
-                    .size(25.dp)
-                    .padding(end = 8.dp)
-            )
-            Text(text = league.name.uppercase())
+                    .fillMaxWidth()
+                    .background(MaterialTheme.colorScheme.secondaryContainer)
+                    .padding(horizontal = 16.dp)
+            ) {
+                AsyncImage(
+                    model = league.country_flag,
+                    contentDescription = "League Country Flag",
+                    modifier = Modifier
+                        .size(25.dp)
+                        .padding(end = 8.dp)
+                )
+                Text(text = league.name.uppercase())
+            }
         }
         Column(Modifier.fillMaxWidth()) {
             repeat(games.size) { i ->

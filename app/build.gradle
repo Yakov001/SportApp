@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -71,4 +72,9 @@ dependencies {
 
     //One Signal SDK
     implementation 'com.onesignal:OneSignal:[4.0.0, 4.99.99]'
+
+    // Room
+    implementation "androidx.room:room-runtime:2.5.0"
+    kapt "androidx.room:room-compiler:2.5.0"
+    implementation "androidx.room:room-ktx:2.5.0"
 }

@@ -1,11 +1,14 @@
 package com.example.sportapp.model.data_classes.fixtures
 
+import androidx.room.Ignore
+
 data class Away(
-    val coach_id: Any?,
-    val form: Any?,
     val id: Int,
     val img: String,
-    val kit_colors: KitColors,
     val name: String,
-    val short_code: String
+    val short_code: String,
+
+    @Ignore val coach_id: Any?,
+    @Ignore val form: Any?,
+    @Ignore val kit_colors: KitColors
 )

@@ -8,6 +8,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
@@ -17,7 +18,8 @@ import com.example.sportapp.model.data_classes.fixtures.Data
 fun MatchScreen(
     match: Data,
     onBackClick: () -> Unit,
-    onMatchSave: () -> Unit
+    onMatchSave: () -> Unit,
+    isSaved: Boolean = false
 ) {
     Surface(Modifier.fillMaxSize()) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
@@ -36,7 +38,12 @@ fun MatchScreen(
                     }
                     Text(text = match.league.name)
                     IconButton(onClick = onMatchSave) {
-                        Icon(imageVector = Icons.Default.Bookmark, contentDescription = "Bookmark", modifier = Modifier.size(50.dp))
+                        Icon(
+                            imageVector = Icons.Default.Bookmark,
+                            contentDescription = "Bookmark",
+                            modifier = Modifier.size(50.dp),
+                            tint = if (isSaved) Color.Yellow else LocalContentColor.current
+                        )
                     }
                 }
                 Row(

@@ -22,7 +22,7 @@ class WebViewFragment : Fragment() {
 
         val myWebView: WebView = view.findViewById(R.id.webview)
         myWebView.settings.javaScriptEnabled = true
-        myWebView.loadUrl("https://onesignal.com/")
+        myWebView.loadUrl("https://www.fifa.com/")
 
         return view
     }
