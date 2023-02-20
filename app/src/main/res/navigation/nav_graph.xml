@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="com.example.sportapp.ui.fragments.FirstFragment"
+        android:name="com.example.sportapp.presentation.fragments.FirstFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_first">
 
@@ -21,7 +21,7 @@
 
     <fragment
         android:id="@+id/SecondFragment"
-        android:name="com.example.sportapp.ui.fragments.SecondFragment"
+        android:name="com.example.sportapp.presentation.fragments.SecondFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_second">
 
@@ -32,7 +32,7 @@
 
     <fragment
         android:id="@+id/MatchFragment"
-        android:name="com.example.sportapp.ui.fragments.MatchFragment"
+        android:name="com.example.sportapp.presentation.fragments.MatchFragment"
         android:label="@string/match_fragment_label"
         tools:layout="@layout/match_fragment">
         <action
@@ -45,7 +45,7 @@
 
     <fragment
         android:id="@+id/WebViewFragment"
-        android:name="com.example.sportapp.ui.fragments.WebViewFragment"
+        android:name="com.example.sportapp.presentation.fragments.WebViewFragment"
         android:label="@string/web_view_fragment_label"
         tools:layout="@layout/web_view_fragment">
         <action
