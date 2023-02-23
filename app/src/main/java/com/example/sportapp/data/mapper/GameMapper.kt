@@ -120,7 +120,7 @@ class GameMapper {
 
             homeTeam = TeamDbModel(
                 name = game.homeTeam.name,
-                image = game.homeTeam.name
+                image = game.homeTeam.image
             ),
             awayTeam = TeamDbModel(
                 name = game.awayTeam.name,

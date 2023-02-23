@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBackIos
 import androidx.compose.material.icons.filled.Bookmark
+import androidx.compose.material.icons.outlined.Bookmark
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -42,7 +43,7 @@ fun MatchScreen(
                     Text(text = game.league.name)
                     IconButton(onClick = onMatchSave) {
                         Icon(
-                            imageVector = Icons.Default.Bookmark,
+                            imageVector = Icons.Outlined.Bookmark,
                             contentDescription = "Bookmark",
                             modifier = Modifier.size(50.dp),
                             tint = if (isSaved) Color.Yellow else LocalContentColor.current
