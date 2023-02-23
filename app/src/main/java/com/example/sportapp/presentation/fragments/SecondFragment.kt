@@ -12,7 +12,7 @@ import androidx.navigation.findNavController
 import com.example.sportapp.presentation.compose.theme.SportAppTheme
 import com.example.sportapp.presentation.viewModel.MainViewModel
 import com.example.sportapp.databinding.FragmentSecondBinding
-import com.example.sportapp.presentation.compose.screens.LeaguesListScreen
+import com.example.sportapp.presentation.compose.screens.leagues_list_screen.LeaguesListScreen
 import com.example.sportapp.R
 
 /**

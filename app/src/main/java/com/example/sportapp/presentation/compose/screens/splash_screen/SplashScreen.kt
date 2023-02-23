@@ -1,4 +1,4 @@
-package com.example.sportapp.presentation.compose.screens
+package com.example.sportapp.presentation.compose.screens.splash_screen
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

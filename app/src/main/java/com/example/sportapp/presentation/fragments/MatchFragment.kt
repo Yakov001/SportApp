@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.example.sportapp.databinding.MatchFragmentBinding
-import com.example.sportapp.presentation.compose.screens.MatchScreen
+import com.example.sportapp.presentation.compose.screens.match_screen.MatchScreen
 import com.example.sportapp.presentation.compose.theme.SportAppTheme
 import com.example.sportapp.presentation.viewModel.MainViewModel
 import com.example.sportapp.R

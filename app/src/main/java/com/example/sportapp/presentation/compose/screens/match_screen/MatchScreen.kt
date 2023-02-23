@@ -1,4 +1,4 @@
-package com.example.sportapp.presentation.compose.screens
+package com.example.sportapp.presentation.compose.screens.match_screen
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons

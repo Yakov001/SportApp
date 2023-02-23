@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.sportapp.R
 import com.example.sportapp.databinding.FragmentFirstBinding
-import com.example.sportapp.presentation.compose.screens.SplashScreen
+import com.example.sportapp.presentation.compose.screens.splash_screen.SplashScreen
 import com.example.sportapp.presentation.compose.theme.SportAppTheme
 import com.example.sportapp.presentation.viewModel.MainViewModel
 
